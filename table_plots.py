@@ -27,7 +27,7 @@ def plots(input_path, output_path='/pfs/out'):
         print('Processing {} with format {}'.format(
             r['path'],
             r['format']))
-        if r.get('format', '') == 'csv' and r['path'].startswith('original'):
+        if r.get('format', '') == 'csv':
             print('Attempting stats for {} with format {}'.format(
                 r['path'],
                 r['format']))
