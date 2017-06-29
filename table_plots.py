@@ -24,16 +24,28 @@ def plots(input_path, output_path='/pfs/out'):
     ]
     dp_out.descriptor['resources'] = []
     for r in dp.descriptor['resources']:
+        print('Processing {} with format {}'.format(
+            r['path'],
+            r['format']))
         if r.get('format', '') == 'csv':
+            print('Attempting plot for {} with format {}'.format(
+                r['path'],
+                r['format']))
             df = pd.read_csv(os.path.join(dp.base_path, r['path']))
             try:
                 fig = df.plot().get_figure()
                 plot_name = os.path.basename('{}.png'.format(r['name']))
                 fig.savefig(os.path.join(output_path, plot_name))
-                dp_out.descriptor['resources'].append({'name': plot_name, 'path':
-                    plot_name})
+                dp_out.descriptor['resources'].append({
+                    'name': plot_name,
+                    'path': plot_name})
+                print('Done generating plot for {} with format {}'.format(
+                    r['path'],
+                    r['format']))
             except:
-                pass
+                print('Failed to generate plot for {} with format {}'.format(
+                    r['path'],
+                    r['format']))
 
     with open(os.path.join(output_path, 'datapackage.json'), 'w') as f:
         f.write(dp_out.to_json())
