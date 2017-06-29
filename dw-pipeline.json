@@ -3,7 +3,7 @@
     "name": "nba-plots"
   },
   "transform": {
-    "image": "rflprr/custom-pipeline:release-0.1.1",
+    "image": "rflprr/custom-pipeline:release-0.1.3",
     "cmd": [
       "/usr/src/custom-pipeline/table_plots.py",
       "/pfs/nba-tables"

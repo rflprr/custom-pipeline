@@ -24,7 +24,7 @@ def plots(input_path, output_path='/pfs/out'):
     ]
     dp_out.descriptor['resources'] = []
     for r in dp.descriptor['resources']:
-        if r.get('mediatype', '') == 'text/csv':
+        if r.get('format', '') == 'csv':
             df = pd.read_csv(os.path.join(dp.base_path, r['path']))
             try:
                 fig = df.plot().get_figure()
