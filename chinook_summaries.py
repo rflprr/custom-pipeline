@@ -10,14 +10,14 @@ import pandas as pd
 @click.command()
 @click.argument('input_path')
 @click.option('-o', '--output_path', default='/pfs/out')
-def plots(input_path, output_path='/pfs/out'):
+def chinook_summaries(input_path, output_path='/pfs/out'):
     dp = datapackage.DataPackage(descriptor=os.path.join(input_path,
                                                          'datapackage.json'))
 
     dp_out = datapackage.DataPackage()
-    dp_out.descriptor['name'] = 'nba-plots'
-    dp_out.descriptor['title'] = 'nba-plots'
-    dp_out.descriptor['description'] = 'My NBA Plots'
+    dp_out.descriptor['name'] = 'chinook-summary'
+    dp_out.descriptor['title'] = 'chinook-summary'
+    dp_out.descriptor['description'] = 'Summary Stats from Chinook DB'
     dp_out.descriptor['x-visibility'] = 'PRIVATE'
     dp_out.descriptor['licenses'] = [
         {'name': 'Other'}
@@ -53,4 +53,4 @@ def plots(input_path, output_path='/pfs/out'):
 
 
 if __name__ == '__main__':
-    plots()
+    chinook_summaries()

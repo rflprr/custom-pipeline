@@ -1,17 +1,17 @@
 {
   "pipeline": {
-    "name": "nba-plots"
+    "name": "chinook-summaries"
   },
   "transform": {
-    "image": "rflprr/custom-pipeline:release-0.1.6",
+    "image": "rflprr/chinook-summaries:release-0.1.0",
     "cmd": [
-      "/usr/src/custom-pipeline/table_plots.py",
+      "/usr/src/custom-pipeline/chinook_summaries.py",
       "/pfs/nba-tables"
     ]
   },
   "input": {
     "atom": {
-      "repo": "nba-tables",
+      "repo": "chinook-tables",
       "glob": "/"
     }
   },
